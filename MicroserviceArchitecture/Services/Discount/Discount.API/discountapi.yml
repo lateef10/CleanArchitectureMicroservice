@@ -1,0 +1,13 @@
+﻿apiVersion: v1
+kind: Pod
+metadata:
+  name: discountpod
+  labels:
+    env: discountpod
+spec:
+  containers:
+  - name: discountpod
+    image: discountapi
+    imagePullPolicy: Never
+    ports:
+        - containerPort: 80
