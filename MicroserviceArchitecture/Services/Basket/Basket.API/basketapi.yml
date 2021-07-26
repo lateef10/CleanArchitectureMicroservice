@@ -64,7 +64,7 @@ spec:
           - name: environmentVariables__ASPNETCORE_ENVIRONMENT
             value: Development
           - name: CacheSettings__ConnectionString
-            value: shopping-redis:31468
+            value: redisdb-service:30001
 
 ---
 
