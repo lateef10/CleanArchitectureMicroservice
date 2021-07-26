@@ -34,3 +34,49 @@ spec:
     - port: 6379
       targetPort: 80
       nodePort: 30001
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basketapi
+  labels:
+    app: basketapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basketapi
+  template:
+    metadata:
+      labels:
+        app: basketapi
+    spec:
+      containers:
+      - name: basketapi
+        image: basketapi
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+        env:
+          - name: environmentVariables__ASPNETCORE_ENVIRONMENT
+            value: Development
+          - name: CacheSettings__ConnectionString
+            value: shopping-redis:31468
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: basketapi-service
+spec:
+  type: NodePort
+  selector:
+    app: basketapi
+  ports:
+    - port: 8008
+      targetPort: 80
+      nodePort: 32001
