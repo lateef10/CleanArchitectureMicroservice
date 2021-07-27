@@ -14,5 +14,6 @@ namespace Microservices.Common
 
 
         public const string GetRedisConnectionString = "CacheSettings:ConnectionString";
+        public const string GrpcSettingsDiscountUrl = "GrpcSettings:DiscountUrl";
     }
 }

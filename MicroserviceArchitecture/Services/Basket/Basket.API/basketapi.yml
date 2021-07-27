@@ -65,6 +65,8 @@ spec:
             value: Development
           - name: CacheSettings__ConnectionString
             value: redisdb-service:8022
+          - name: GrpcSettings__DiscountUrl
+            value: http://discountgrpc-service:8028
 
 ---
 
