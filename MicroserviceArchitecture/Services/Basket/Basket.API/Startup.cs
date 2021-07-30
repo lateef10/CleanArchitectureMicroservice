@@ -32,7 +32,9 @@ namespace Basket.API
                 options.Configuration = Configuration.GetValue<string>(Constants.GetRedisConnectionString);
             });
 
+            //General Configuration
             services.AddScoped<IBasketRepository, BasketRepository>();
+            services.AddAutoMapper(typeof(Startup));
 
             // Grpc Configuration
             services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>

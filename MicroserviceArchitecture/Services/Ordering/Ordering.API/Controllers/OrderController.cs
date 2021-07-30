@@ -32,7 +32,7 @@ namespace Ordering.API.Controllers
             return Ok(orders);
         }
 
-        // testing purpose
+        //testing purpose, not really functioning becos the _mediator.Send(command) will be called from the EventBus Message consumer
         [HttpPost(Name = "CheckoutOrder")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult<int>> CheckoutOrder([FromBody] CheckoutOrderCommand command)
