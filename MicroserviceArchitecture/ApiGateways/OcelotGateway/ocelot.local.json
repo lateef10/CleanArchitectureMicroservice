@@ -1,14 +1,4 @@
 {
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft": "Warning",
-      "Microsoft.Hosting.Lifetime": "Information"
-    }
-  },
-  "AllowedHosts": "*",
-
-
   "Routes": [
 
     //Catalog API
@@ -141,5 +131,4 @@
   "GlobalConfiguration": {
     "BaseUrl": "https://localhost:5010"
   }
-
 }
