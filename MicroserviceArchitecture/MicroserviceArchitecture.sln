@@ -41,6 +41,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotGateway", "ApiGateway
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.Aggregator", "ApiGateways\Shopping.Aggregator\Shopping.Aggregator.csproj", "{EA412660-8494-4700-9A7C-EDA5DBB82758}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Yaml", "Yaml", "{BFA5586E-CE6A-4E76-8173-E91D6E74218E}"
+	ProjectSection(SolutionItems) = preProject
+		Yaml\elasticsearch.yml = Yaml\elasticsearch.yml
+		Yaml\kibana.yml = Yaml\kibana.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Logging", "BuildingBlocks\Common.Logging\Common.Logging.csproj", "{6236DFAC-5184-4514-B8E9-604D4C1EFB81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +103,10 @@ Global
 		{EA412660-8494-4700-9A7C-EDA5DBB82758}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA412660-8494-4700-9A7C-EDA5DBB82758}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA412660-8494-4700-9A7C-EDA5DBB82758}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6236DFAC-5184-4514-B8E9-604D4C1EFB81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6236DFAC-5184-4514-B8E9-604D4C1EFB81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6236DFAC-5184-4514-B8E9-604D4C1EFB81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6236DFAC-5184-4514-B8E9-604D4C1EFB81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,6 +127,7 @@ Global
 		{27BA3178-8B33-484B-9EEE-AB8D4A6CD9F6} = {3F493858-594D-4C94-A83B-A7B7C6B87E8A}
 		{394B1E62-5B4C-4B12-A3CA-7D68FB674F12} = {15A4F1DF-AC5B-4B6D-88FE-7B935E23C28C}
 		{EA412660-8494-4700-9A7C-EDA5DBB82758} = {15A4F1DF-AC5B-4B6D-88FE-7B935E23C28C}
+		{6236DFAC-5184-4514-B8E9-604D4C1EFB81} = {3F493858-594D-4C94-A83B-A7B7C6B87E8A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54E19386-F8CB-4C35-87A2-184144B5861C}
