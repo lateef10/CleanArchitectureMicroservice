@@ -25,6 +25,8 @@ spec:
             value: Development
           - name: DatabaseSettings__ConnectionString
             value: mongodb://mongodb-service:8017
+          - name: ElasticConfiguration__Uri
+            value: http://elasticsearch-service:9200
 
 ---
 
