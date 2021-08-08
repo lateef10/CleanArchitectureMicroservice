@@ -1,0 +1,41 @@
+﻿
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ocelotgateway
+  labels:
+    app: ocelotgateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ocelotgateway
+  template:
+    metadata:
+      labels:
+        app: ocelotgateway
+    spec:
+      containers:
+      - name: ocelotgateway
+        image: ocelotgateway
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+        env:
+          - name: environmentVariables__ASPNETCORE_ENVIRONMENT
+            value: Development
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ocelotgateway-service
+spec:
+  type: NodePort
+  selector:
+    app: ocelotgateway
+  ports:
+    - port: 8018
+      targetPort: 80
+      nodePort: 32030

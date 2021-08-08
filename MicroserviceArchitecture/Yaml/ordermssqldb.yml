@@ -1,0 +1,45 @@
+﻿
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mssqlorderdb
+  labels:
+    app: mssqlorderdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mssqlorderdb
+  template:
+    metadata:
+      labels:
+        app: mssqlorderdb
+    spec:
+      containers:
+      - name: mssqlorderdb
+        image: mcr.microsoft.com/mssql/server:2017-latest
+        ports:
+        - containerPort: 1433
+        env:
+          - name: SA_PASSWORD
+            value: MyC0m9l&xP@ssw0rd
+          - name: ACCEPT_EULA
+            value: "Y"
+          - name: MSSQL_PID 
+            value: "Developer"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mssqlorderdb-service
+spec:
+  type: NodePort
+  selector:
+    app: mssqlorderdb
+  ports:
+    - port: 1433
+      targetPort: 1433
+      nodePort: 32202

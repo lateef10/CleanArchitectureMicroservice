@@ -27,6 +27,10 @@ spec:
             value: mongodb://mongodb-service:8017
           - name: ElasticConfiguration__Uri
             value: http://elasticsearch-service:9200
+          - name: OpenTelemetryTracingConfiguration__ZipkinUri
+            value: http://zipkin-service:9411/api/v2/spans
+          - name: OpenTelemetryTracingConfiguration__JaegerHost
+            value: jaeger-service
 
 ---
 

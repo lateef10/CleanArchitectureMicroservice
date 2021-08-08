@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using OpenTelemetry.Trace;
 using System;
 
 namespace Basket.API
@@ -62,6 +63,23 @@ namespace Basket.API
 
             services.AddHealthChecks()
                     .AddRedis(Configuration["CacheSettings:ConnectionString"], "Redis Health", HealthStatus.Degraded);
+
+
+            //Tracing
+            services.AddOpenTelemetryTracing(cfg => cfg
+            .AddZipkinExporter(o =>
+            {
+                o.Endpoint = new Uri(Configuration["OpenTelemetryTracingConfiguration:ZipkinUri"]);
+                //o.ServiceName = "Catalog Tracing";
+            })
+            .AddJaegerExporter(c =>
+            {
+                c.AgentHost = Configuration["OpenTelemetryTracingConfiguration:JaegerHost"];
+                c.AgentPort = 6831;
+                //c.ServiceName = "Catalog Tracing";
+            })
+            .AddAspNetCoreInstrumentation()
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

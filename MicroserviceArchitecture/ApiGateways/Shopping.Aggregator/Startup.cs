@@ -9,11 +9,13 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using OpenTelemetry.Trace;
 using Polly;
 using Polly.Extensions.Http;
 using Shopping.Aggregator.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -60,17 +62,32 @@ namespace Shopping.Aggregator
                 .AddUrlGroup(new Uri($"{Configuration["ApiSettings:CatalogUrl"]}/swagger/index.html"), "Catalog.API", HealthStatus.Degraded)
                 .AddUrlGroup(new Uri($"{Configuration["ApiSettings:BasketUrl"]}/swagger/index.html"), "Basket.API", HealthStatus.Degraded)
                 .AddUrlGroup(new Uri($"{Configuration["ApiSettings:OrderingUrl"]}/swagger/index.html"), "Ordering.API", HealthStatus.Degraded);
+
+
+            //Tracing
+            services.AddOpenTelemetryTracing(cfg => cfg
+            .AddZipkinExporter(o =>
+            {
+                o.Endpoint = new Uri(Configuration["OpenTelemetryTracingConfiguration:ZipkinUri"]);
+                //o.ServiceName = "Catalog Tracing";
+            })
+            .AddJaegerExporter(c =>
+            {
+                c.AgentHost = Configuration["OpenTelemetryTracingConfiguration:JaegerHost"];
+                c.AgentPort = 6831;
+                //c.ServiceName = "Catalog Tracing";
+            })
+            .AddAspNetCoreInstrumentation()
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Shopping.Aggregator v1"));
-            }
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Shopping.Aggregator v1"));
+
 
             app.UseRouting();
 

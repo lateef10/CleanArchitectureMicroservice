@@ -43,8 +43,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.Aggregator", "ApiG
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Yaml", "Yaml", "{BFA5586E-CE6A-4E76-8173-E91D6E74218E}"
 	ProjectSection(SolutionItems) = preProject
+		Yaml\basketapi.yml = Yaml\basketapi.yml
+		Yaml\catalogapi.yml = Yaml\catalogapi.yml
+		Yaml\discountapi.yml = Yaml\discountapi.yml
+		Yaml\discountGRPC.yml = Yaml\discountGRPC.yml
+		Yaml\discountpostgres.yml = Yaml\discountpostgres.yml
 		Yaml\elasticsearch.yml = Yaml\elasticsearch.yml
 		Yaml\kibana.yml = Yaml\kibana.yml
+		Yaml\ocelotgateway.yml = Yaml\ocelotgateway.yml
+		Yaml\orderingapi.yml = Yaml\orderingapi.yml
+		Yaml\ordermssqldb.yml = Yaml\ordermssqldb.yml
+		Yaml\rabbitmq.yml = Yaml\rabbitmq.yml
+		Yaml\shoppingaggregatorapi.yml = Yaml\shoppingaggregatorapi.yml
+		Yaml\telemetaryJaeger.yml = Yaml\telemetaryJaeger.yml
+		Yaml\telemetaryzipkin.yml = Yaml\telemetaryzipkin.yml
+		Yaml\webstatus.yml = Yaml\webstatus.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Logging", "BuildingBlocks\Common.Logging\Common.Logging.csproj", "{6236DFAC-5184-4514-B8E9-604D4C1EFB81}"
@@ -53,7 +66,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApps", "WebApps", "{6ABC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebStatus", "WebStatus", "{1E0E1EF7-D190-49BC-A44F-BE60DC03BCDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStatus", "WebApps\WebStatus\WebStatus\WebStatus.csproj", "{B35978AE-8D11-428B-B78E-2B4DDC60A089}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStatus", "WebApps\WebStatus\WebStatus\WebStatus.csproj", "{B35978AE-8D11-428B-B78E-2B4DDC60A089}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

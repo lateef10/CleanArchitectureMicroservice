@@ -1,5 +1,5 @@
 {
-  //For Docker environment... We change the Host name has the container name
+  //For Docker/Kubernetes environment... We change the Host name has the container name and also change the port
 
   "Routes": [
     //Catalog API

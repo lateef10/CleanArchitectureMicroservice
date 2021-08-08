@@ -67,6 +67,14 @@ spec:
             value: redisdb-service:8022
           - name: GrpcSettings__DiscountUrl
             value: http://discountgrpc-service:8028
+          - name: EventBusSettings__HostAddress
+            value: amqp://guest:guest@rabbitmq-service:5672
+          - name: ElasticConfiguration__Uri
+            value: http://elasticsearch-service:9200
+          - name: OpenTelemetryTracingConfiguration__ZipkinUri
+            value: http://zipkin-service:9411/api/v2/spans
+          - name: OpenTelemetryTracingConfiguration__JaegerHost
+            value: jaeger-service
 
 ---
 
