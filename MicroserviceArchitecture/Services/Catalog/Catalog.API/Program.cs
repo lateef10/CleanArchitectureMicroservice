@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Serilog;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,6 +16,9 @@ namespace Catalog.API
     {
         public static void Main(string[] args)
         {
+            Activity.DefaultIdFormat = ActivityIdFormat.W3C;
+            Activity.ForceDefaultIdFormat = true;
+
             CreateHostBuilder(args).Build().Run();
         }
 

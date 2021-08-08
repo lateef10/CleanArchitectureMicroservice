@@ -36,10 +36,6 @@ namespace Catalog.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            /*Activity.DefaultIdFormat = ActivityIdFormat.W3C;
-            services.AddHttpClient("basketapi").ConfigureHttpClient(c => c.BaseAddress = new Uri("http://basketapi-service:8008"));
-            */
-
             services.AddScoped<ICatalogContext, CatalogContext>();
             services.AddScoped<IProductRepository, ProductRepository>();
 
@@ -86,15 +82,6 @@ namespace Catalog.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                /*endpoints.MapGet("/", async context =>
-                {
-                    context.Response.Headers.Add("Request-Id", Activity.Current?.TraceId.ToString() ?? string.Empty);
-
-                    using var client = context.RequestServices.GetRequiredService<IHttpClientFactory>().CreateClient("basketapi");
-                    var content = client.GetStringAsync("/");
-
-                    await context.Response.WriteAsync(await content);
-                });*/
                 endpoints.MapHealthChecks("/hc", new HealthCheckOptions()
                 {
                     Predicate = _ => true,
